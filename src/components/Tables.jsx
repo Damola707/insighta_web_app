@@ -3,17 +3,17 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 export function DataTable({ columns, data, actions }) {
   return (
-    <div className="bg-white rounded-lg shadow border border-gray-100 overflow-hidden">
+    <div className="bg-white dark:bg-gray-800 rounded-lg shadow border border-gray-100 overflow-hidden">
       <div className="overflow-x-auto">
         <table className="w-full">
-          <thead className="bg-gray-50 border-b border-gray-200">
+          <thead className="bg-gray-50 dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700">
             <tr>
               {columns.map((col) => (
-                <th key={col.key} className="px-6 py-4 text-left text-xs font-semibold text-gray-900 uppercase tracking-wider">
+                <th key={col.key} className="px-6 py-4 text-left text-xs font-semibold text-gray-900 dark:text-white uppercase tracking-wider">
                   {col.label}
                 </th>
               ))}
-              {actions && <th className="px-6 py-4 text-left text-xs font-semibold text-gray-900 uppercase tracking-wider">Actions</th>}
+              {actions && <th className="px-6 py-4 text-left text-xs font-semibold text-gray-900 dark:text-white uppercase tracking-wider">Actions</th>}
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-200">
@@ -25,9 +25,9 @@ export function DataTable({ columns, data, actions }) {
               </tr>
             ) : (
               data.map((row, idx) => (
-                <tr key={idx} className="hover:bg-gray-50 transition duration-150">
+                <tr key={idx} className="hover:bg-gray-50 dark:bg-gray-900 transition duration-150">
                   {columns.map((col) => (
-                    <td key={col.key} className="px-6 py-4 text-sm text-gray-700">
+                    <td key={col.key} className="px-6 py-4 text-sm text-gray-700 dark:text-gray-300">
                       {col.render ? col.render(row[col.key], row) : row[col.key]}
                     </td>
                   ))}
@@ -50,21 +50,21 @@ export function Pagination({ page, pageSize, total, onPageChange, onPageSizeChan
   const totalPages = Math.ceil(total / pageSize);
   
   return (
-    <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mt-6 p-4 bg-white rounded-lg border border-gray-100">
+    <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mt-6 p-4 bg-white dark:bg-gray-800 rounded-lg border border-gray-100">
       <div className="flex flex-col sm:flex-row items-center gap-4">
-        <label className="text-sm text-gray-700 whitespace-nowrap">
+        <label className="text-sm text-gray-700 dark:text-gray-300 whitespace-nowrap">
           Items per page:
           <select
             value={pageSize}
             onChange={(e) => onPageSizeChange(Number(e.target.value))}
-            className="ml-2 px-3 py-2 border border-gray-300 rounded-lg text-sm hover:border-gray-400 focus:ring-2 focus:ring-blue-500 outline-none transition"
+            className="ml-2 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-sm hover:border-gray-400 focus:ring-2 focus:ring-blue-500 outline-none transition"
           >
             {[5, 10, 25, 50].map(size => (
               <option key={size} value={size}>{size}</option>
             ))}
           </select>
         </label>
-        <span className="text-sm text-gray-600 whitespace-nowrap">
+        <span className="text-sm text-gray-600 dark:text-gray-400 whitespace-nowrap">
           {total === 0 ? 'No items' : `${Math.min((page - 1) * pageSize + 1, total)} to ${Math.min(page * pageSize, total)} of ${total}`}
         </span>
       </div>
@@ -73,7 +73,7 @@ export function Pagination({ page, pageSize, total, onPageChange, onPageSizeChan
         <button
           onClick={() => onPageChange(page - 1)}
           disabled={page === 1}
-          className="p-2 hover:bg-gray-100 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed transition"
+          className="p-2 hover:bg-gray-100 dark:bg-gray-700 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed transition"
           title="Previous page"
         >
           <ChevronLeft size={18} />
@@ -88,7 +88,7 @@ export function Pagination({ page, pageSize, total, onPageChange, onPageSizeChan
                 className={`px-3 py-1 rounded-lg transition font-medium ${
                   page === pageNum
                     ? 'bg-blue-600 text-white'
-                    : 'hover:bg-gray-100 text-gray-700'
+                    : 'hover:bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300'
                 }`}
               >
                 {pageNum}
@@ -99,7 +99,7 @@ export function Pagination({ page, pageSize, total, onPageChange, onPageSizeChan
         <button
           onClick={() => onPageChange(page + 1)}
           disabled={page >= totalPages}
-          className="p-2 hover:bg-gray-100 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed transition"
+          className="p-2 hover:bg-gray-100 dark:bg-gray-700 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed transition"
           title="Next page"
         >
           <ChevronRight size={18} />
@@ -115,7 +115,7 @@ export function StatusBadge({ status }) {
     pending: { bg: 'bg-yellow-100', text: 'text-yellow-800', border: 'border-yellow-200' },
     failed: { bg: 'bg-red-100', text: 'text-red-800', border: 'border-red-200' },
     active: { bg: 'bg-green-100', text: 'text-green-800', border: 'border-green-200' },
-    inactive: { bg: 'bg-gray-100', text: 'text-gray-800', border: 'border-gray-200' },
+    inactive: { bg: 'bg-gray-100 dark:bg-gray-700', text: 'text-gray-800', border: 'border-gray-200 dark:border-gray-700' },
   };
 
   const config = statusConfig[status] || statusConfig.inactive;

@@ -6,9 +6,9 @@ export function MetricCard({ label, value, change, trend }) {
   const isPositive = trend === 'up';
   
   return (
-    <div className="bg-white rounded-lg shadow hover:shadow-lg transition p-6 border border-gray-100">
-      <p className="text-gray-600 text-xs font-semibold uppercase tracking-wide">{label}</p>
-      <p className="text-3xl font-bold text-gray-900 mt-3">{value}</p>
+    <div className="bg-white dark:bg-gray-800 rounded-lg shadow hover:shadow-lg transition p-6 border border-gray-100">
+      <p className="text-gray-600 dark:text-gray-400 text-xs font-semibold uppercase tracking-wide">{label}</p>
+      <p className="text-3xl font-bold text-gray-900 dark:text-white mt-3">{value}</p>
       <div className={`flex items-center mt-4 font-semibold text-sm ${isPositive ? 'text-green-600' : 'text-red-600'}`}>
         {isPositive ? <TrendingUp size={16} /> : <TrendingDown size={16} />}
         <span className="ml-1">{change}</span>
@@ -19,8 +19,8 @@ export function MetricCard({ label, value, change, trend }) {
 
 export function LineChartCard({ data, title }) {
   return (
-    <div className="bg-white rounded-lg shadow hover:shadow-lg transition p-6 border border-gray-100">
-      <h3 className="text-lg font-semibold text-gray-900 mb-6">{title}</h3>
+    <div className="bg-white dark:bg-gray-800 rounded-lg shadow hover:shadow-lg transition p-6 border border-gray-100">
+      <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-6">{title}</h3>
       <ResponsiveContainer width="100%" height={300}>
         <LineChart data={data} margin={{ top: 5, right: 10, left: -20, bottom: 5 }}>
           <defs>
@@ -45,8 +45,8 @@ export function LineChartCard({ data, title }) {
 
 export function BarChartCard({ data, title }) {
   return (
-    <div className="bg-white rounded-lg shadow hover:shadow-lg transition p-6 border border-gray-100">
-      <h3 className="text-lg font-semibold text-gray-900 mb-6">{title}</h3>
+    <div className="bg-white dark:bg-gray-800 rounded-lg shadow hover:shadow-lg transition p-6 border border-gray-100">
+      <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-6">{title}</h3>
       <ResponsiveContainer width="100%" height={300}>
         <BarChart data={data} margin={{ top: 5, right: 10, left: -20, bottom: 5 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" />

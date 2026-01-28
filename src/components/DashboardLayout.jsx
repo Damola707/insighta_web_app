@@ -33,7 +33,7 @@ export function DashboardLayout() {
   };
 
   return (
-    <div className="flex h-screen bg-gray-50">
+    <div className="flex h-screen bg-gray-50 dark:bg-gray-900">
       {/* DESKTOP SIDEBAR */}
       <aside 
         onMouseEnter={() => setSidebarHovered(true)}
@@ -115,7 +115,7 @@ export function DashboardLayout() {
 
       {/* MOBILE HEADER & CONTENT */}
       <div className="flex flex-col flex-1 md:hidden">
-        <header className="bg-white shadow-md sticky top-0 z-40 border-b border-gray-200">
+        <header className="bg-white dark:bg-gray-800 shadow-md sticky top-0 z-40 border-b border-gray-200 dark:border-gray-700">
           <div className="flex items-center justify-between px-4 py-4">
             <div className="flex items-center space-x-2">
               <InsightaLogo size={32} />
@@ -128,7 +128,7 @@ export function DashboardLayout() {
               </button>
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-2 hover:bg-gray-100 rounded-lg transition text-gray-600"
+                className="p-2 hover:bg-gray-100 dark:bg-gray-700 rounded-lg transition text-gray-600 dark:text-gray-400"
               >
                 {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
               </button>
@@ -137,7 +137,7 @@ export function DashboardLayout() {
           
           {/* Mobile menu */}
           {mobileMenuOpen && (
-            <nav className="px-4 py-3 border-t border-gray-200 space-y-2 bg-gray-50">
+            <nav className="px-4 py-3 border-t border-gray-200 dark:border-gray-700 space-y-2 bg-gray-50 dark:bg-gray-900">
               {navItems.map((item) => {
                 const active = isActive(item.path);
                 return (
@@ -150,7 +150,7 @@ export function DashboardLayout() {
                     className={`w-full flex items-center space-x-3 px-4 py-2 rounded-lg transition ${
                       active
                         ? 'bg-blue-600 text-white'
-                        : 'text-gray-700 hover:bg-gray-200'
+                        : 'text-gray-700 dark:text-gray-300 hover:bg-gray-200'
                     }`}
                   >
                     <item.icon size={20} />
@@ -181,10 +181,10 @@ export function DashboardLayout() {
 
       {/* DESKTOP MAIN CONTENT */}
       <main className="hidden md:flex md:flex-col flex-1 overflow-auto">
-        <header className="bg-white shadow-sm sticky top-0 z-30 border-b border-gray-200">
+        <header className="bg-white dark:bg-gray-800 shadow-sm sticky top-0 z-30 border-b border-gray-200 dark:border-gray-700">
           <div className="px-8 py-6 flex items-center justify-between h-7">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900"></h1>
+              <h1 className="text-3xl font-bold text-gray-900 dark:text-white"></h1>
               <p className="text-sm text-gray-500 mt-1">Welcome back, {user?.name?.split(' ')[0]}</p>
             </div>
             <div className="flex items-center space-x-4">
@@ -194,7 +194,7 @@ export function DashboardLayout() {
               </button>
               <button
                 onClick={handleLogout}
-                className="flex items-center space-x-2 px-4 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 rounded-lg transition font-medium"
+                className="flex items-center space-x-2 px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-red-50 hover:text-red-600 rounded-lg transition font-medium"
               >
                 <LogOut size={18} />
                 <span>Logout</span>

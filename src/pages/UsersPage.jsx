@@ -48,7 +48,7 @@ export function UsersPage() {
     { 
       key: 'name', 
       label: 'User',
-      render: (value) => <span className="font-semibold text-gray-900">{value}</span>
+      render: (value) => <span className="font-semibold text-gray-900 dark:text-white">{value}</span>
     },
     { 
       key: 'email', 
@@ -68,12 +68,12 @@ export function UsersPage() {
     { 
       key: 'joinDate', 
       label: 'Join Date',
-      render: (value) => <span className="text-gray-600">{value}</span>
+      render: (value) => <span className="text-gray-600 dark:text-gray-400">{value}</span>
     },
     { 
       key: 'totalSpent', 
       label: 'Total Spent',
-      render: (value) => <span className="font-semibold text-gray-900">${value.toLocaleString()}</span>
+      render: (value) => <span className="font-semibold text-gray-900 dark:text-white">${value.toLocaleString()}</span>
     },
   ];
 
@@ -99,13 +99,13 @@ export function UsersPage() {
       {/* Page header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900 flex items-center space-x-3 mb-2">
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-white flex items-center space-x-3 mb-2">
             <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg flex items-center justify-center">
               <UsersIcon size={24} className="text-white" />
             </div>
             <span>Users</span>
           </h1>
-          <p className="text-gray-600">Manage and monitor user accounts</p>
+          <p className="text-gray-600 dark:text-gray-400">Manage and monitor user accounts</p>
         </div>
         <button className="flex items-center space-x-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition whitespace-nowrap">
           <UserPlus size={18} />
@@ -205,7 +205,7 @@ export function UsersPage() {
                     </AlertDialogContent>
                     </AlertDialog>
                       <button
-                        className="text-gray-600 hover:text-gray-700 hover:bg-gray-100 p-2 rounded-lg transition"
+                        className="text-gray-600 dark:text-gray-400 hover:text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:bg-gray-700 p-2 rounded-lg transition"
                         title="More"
                       >
                         <MoreVertical size={16} />

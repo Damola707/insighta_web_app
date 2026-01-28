@@ -41,17 +41,17 @@ export function AnalyticsPage() {
     <div className="space-y-6">
       {/* Page header */}
       <div>
-        <h1 className="text-3xl font-bold text-gray-900 flex items-center space-x-3 mb-2">
+        <h1 className="text-3xl font-bold text-gray-900 dark:text-white flex items-center space-x-3 mb-2">
           <div className="w-10 h-10 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-lg flex items-center justify-center">
             <TrendingUp size={24} className="text-white" />
           </div>
           <span>Analytics</span>
         </h1>
-        <p className="text-gray-600">Track performance and growth metrics</p>
+        <p className="text-gray-600 dark:text-gray-400">Track performance and growth metrics</p>
       </div>
 
       {/* Period selector */}
-      <div className="flex items-center space-x-2 bg-white rounded-lg p-2 w-fit border border-gray-200 shadow-sm">
+      <div className="flex items-center space-x-2 bg-white dark:bg-gray-800 rounded-lg p-2 w-fit border border-gray-200 dark:border-gray-700 shadow-sm">
         {['week', 'month', 'quarter', 'year'].map(period => (
           <button
             key={period}
@@ -59,7 +59,7 @@ export function AnalyticsPage() {
             className={`px-5 py-2.5 rounded-md font-semibold capitalize transition duration-200 ${
               selectedPeriod === period
                 ? 'bg-gradient-to-r from-blue-600 to-cyan-500 text-white shadow-lg'
-                : 'text-gray-600 hover:bg-gradient-to-r hover:from-blue-100 hover:to-cyan-100 hover:text-blue-700'
+                : 'text-gray-600 dark:text-gray-400 hover:bg-gradient-to-r hover:from-blue-100 hover:to-cyan-100 hover:text-blue-700'
             }`}
           >
             {period}
@@ -72,14 +72,14 @@ export function AnalyticsPage() {
         {keyMetrics.map((metric, index) => {
           const Icon = metric.icon;
           return (
-            <div key={index} className={`bg-gradient-to-br ${metric.gradient} rounded-lg border border-gray-200 p-6 hover:shadow-lg transition`}>
+            <div key={index} className={`bg-gradient-to-br ${metric.gradient} rounded-lg border border-gray-200 dark:border-gray-700 p-6 hover:shadow-lg transition`}>
               <div className="flex items-start justify-between mb-4">
                 <div>
-                  <p className="text-gray-600 text-sm font-medium mb-1">{metric.title}</p>
-                  <p className="text-2xl font-bold text-gray-900">{metric.value}</p>
+                  <p className="text-gray-600 dark:text-gray-400 text-sm font-medium mb-1">{metric.title}</p>
+                  <p className="text-2xl font-bold text-gray-900 dark:text-white">{metric.value}</p>
                 </div>
-                <div className="w-12 h-12 bg-white bg-opacity-50 rounded-lg flex items-center justify-center">
-                  <Icon size={24} className="text-gray-700" />
+                <div className="w-12 h-12 bg-white dark:bg-gray-800 bg-opacity-50 rounded-lg flex items-center justify-center">
+                  <Icon size={24} className="text-gray-700 dark:text-gray-300" />
                 </div>
               </div>
               <p className="text-sm font-semibold text-green-600">{metric.change} this period</p>
@@ -90,49 +90,49 @@ export function AnalyticsPage() {
 
       {/* Charts section */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="bg-white rounded-lg border border-gray-200 p-6 shadow-sm hover:shadow-md transition">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Daily Revenue</h3>
+        <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6 shadow-sm hover:shadow-md transition">
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Daily Revenue</h3>
           <LineChartCard data={chartData.revenue} />
         </div>
-        <div className="bg-white rounded-lg border border-gray-200 p-6 shadow-sm hover:shadow-md transition">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">User Engagement</h3>
+        <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6 shadow-sm hover:shadow-md transition">
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">User Engagement</h3>
           <BarChartCard data={chartData.users} />
         </div>
       </div>
 
       {/* Key Metrics and Growth Trends */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="bg-white rounded-lg border border-gray-200 p-6 shadow-sm hover:shadow-md transition">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Key Metrics</h3>
+        <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6 shadow-sm hover:shadow-md transition">
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Key Metrics</h3>
           <div className="space-y-4">
-            <div className="flex justify-between items-center pb-4 border-b border-gray-200 hover:bg-gray-50 -mx-6 px-6 py-2 transition">
-              <span className="text-gray-600">Average Session Duration</span>
-              <span className="font-semibold text-gray-900">4m 32s</span>
+            <div className="flex justify-between items-center pb-4 border-b border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:bg-gray-900 -mx-6 px-6 py-2 transition">
+              <span className="text-gray-600 dark:text-gray-400">Average Session Duration</span>
+              <span className="font-semibold text-gray-900 dark:text-white">4m 32s</span>
             </div>
-            <div className="flex justify-between items-center pb-4 border-b border-gray-200 hover:bg-gray-50 -mx-6 px-6 py-2 transition">
-              <span className="text-gray-600">Bounce Rate</span>
-              <span className="font-semibold text-gray-900">32.5%</span>
+            <div className="flex justify-between items-center pb-4 border-b border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:bg-gray-900 -mx-6 px-6 py-2 transition">
+              <span className="text-gray-600 dark:text-gray-400">Bounce Rate</span>
+              <span className="font-semibold text-gray-900 dark:text-white">32.5%</span>
             </div>
-            <div className="flex justify-between items-center hover:bg-gray-50 -mx-6 px-6 py-2 transition">
-              <span className="text-gray-600">Conversion Rate</span>
-              <span className="font-semibold text-gray-900">3.24%</span>
+            <div className="flex justify-between items-center hover:bg-gray-50 dark:bg-gray-900 -mx-6 px-6 py-2 transition">
+              <span className="text-gray-600 dark:text-gray-400">Conversion Rate</span>
+              <span className="font-semibold text-gray-900 dark:text-white">3.24%</span>
             </div>
           </div>
         </div>
 
-        <div className="bg-white rounded-lg border border-gray-200 p-6 shadow-sm hover:shadow-md transition">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Growth Trends</h3>
+        <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6 shadow-sm hover:shadow-md transition">
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Growth Trends</h3>
           <div className="space-y-4">
-            <div className="flex justify-between items-center pb-4 border-b border-gray-200 hover:bg-gray-50 -mx-6 px-6 py-2 transition">
-              <span className="text-gray-600">Month-over-Month</span>
+            <div className="flex justify-between items-center pb-4 border-b border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:bg-gray-900 -mx-6 px-6 py-2 transition">
+              <span className="text-gray-600 dark:text-gray-400">Month-over-Month</span>
               <span className="font-semibold text-green-600">+12.5%</span>
             </div>
-            <div className="flex justify-between items-center pb-4 border-b border-gray-200 hover:bg-gray-50 -mx-6 px-6 py-2 transition">
-              <span className="text-gray-600">Year-over-Year</span>
+            <div className="flex justify-between items-center pb-4 border-b border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:bg-gray-900 -mx-6 px-6 py-2 transition">
+              <span className="text-gray-600 dark:text-gray-400">Year-over-Year</span>
               <span className="font-semibold text-green-600">+45.3%</span>
             </div>
-            <div className="flex justify-between items-center hover:bg-gray-50 -mx-6 px-6 py-2 transition">
-              <span className="text-gray-600">Weekly Average</span>
+            <div className="flex justify-between items-center hover:bg-gray-50 dark:bg-gray-900 -mx-6 px-6 py-2 transition">
+              <span className="text-gray-600 dark:text-gray-400">Weekly Average</span>
               <span className="font-semibold text-green-600">+8.2%</span>
             </div>
           </div>

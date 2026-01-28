@@ -45,7 +45,7 @@ export function TransactionsPage() {
       key: 'id', 
       label: 'Transaction ID',
       render: (value, row) => (
-        <span className="font-mono text-xs bg-gray-100 px-2 py-1 rounded">
+        <span className="font-mono text-xs bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
           {hiddenRows.has(row.id) ? '••••••' : value}
         </span>
       )
@@ -54,7 +54,7 @@ export function TransactionsPage() {
       key: 'user', 
       label: 'User',
       render: (value, row) => (
-        <span className="font-medium text-gray-900">
+        <span className="font-medium text-gray-900 dark:text-white">
           {hiddenRows.has(row.id) ? '•••••••' : value}
         </span>
       )
@@ -63,7 +63,7 @@ export function TransactionsPage() {
       key: 'amount', 
       label: 'Amount',
       render: (value, row) => (
-        <span className="font-semibold text-gray-900">
+        <span className="font-semibold text-gray-900 dark:text-white">
           {hiddenRows.has(row.id) ? '$•••••' : `$${value.toLocaleString()}`}
         </span>
       )
@@ -74,7 +74,7 @@ export function TransactionsPage() {
       render: (value, row) => {
         if (hiddenRows.has(row.id)) {
           return (
-            <span className="px-3 py-1 rounded-full text-xs font-medium text-gray-400 bg-gray-50">
+            <span className="px-3 py-1 rounded-full text-xs font-medium text-gray-400 bg-gray-50 dark:bg-gray-900">
               •••••••
             </span>
           );
@@ -97,7 +97,7 @@ export function TransactionsPage() {
       render: (value, row) => {
         if (hiddenRows.has(row.id)) {
           return (
-            <span className="px-3 py-1 rounded-full text-xs font-medium text-gray-400 bg-gray-50">
+            <span className="px-3 py-1 rounded-full text-xs font-medium text-gray-400 bg-gray-50 dark:bg-gray-900">
               •••••
             </span>
           );
@@ -109,7 +109,7 @@ export function TransactionsPage() {
       key: 'date', 
       label: 'Date',
       render: (value, row) => (
-        <span className="text-gray-600">
+        <span className="text-gray-600 dark:text-gray-400">
           {hiddenRows.has(row.id) ? '••••/••/••' : value}
         </span>
       )
@@ -138,13 +138,13 @@ export function TransactionsPage() {
       {/* Page header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900 flex items-center space-x-3 mb-2">
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-white flex items-center space-x-3 mb-2">
             <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center">
               <Wallet size={24} className="text-white" />
             </div>
             <span>Transactions</span>
           </h1>
-          <p className="text-gray-600">Manage and view all financial transactions</p>
+          <p className="text-gray-600 dark:text-gray-400">Manage and view all financial transactions</p>
         </div>
         <button className="flex items-center space-x-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition whitespace-nowrap">
           <Download size={18} />
@@ -166,16 +166,16 @@ export function TransactionsPage() {
             <button 
               onClick={() => toggleRowVisibility(row.id)}
               className={`hover:bg-blue-50 p-2 rounded-lg transition ${
-                hiddenRows.has(row.id) ? 'text-gray-400 hover:text-gray-600' : 'text-blue-600 hover:text-blue-700'
+                hiddenRows.has(row.id) ? 'text-gray-400 hover:text-gray-600 dark:text-gray-400' : 'text-blue-600 hover:text-blue-700'
               }`}
               title={hiddenRows.has(row.id) ? 'Show information' : 'Hide information'}
             >
               {hiddenRows.has(row.id) ? <EyeOff size={18} /> : <Eye size={18} />}
             </button>
-            <button className="text-gray-600 hover:text-gray-700 hover:bg-gray-100 p-2 rounded-lg transition" title="Edit">
+            <button className="text-gray-600 dark:text-gray-400 hover:text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:bg-gray-700 p-2 rounded-lg transition" title="Edit">
               <Edit2 size={18} />
             </button>
-            <button className="text-gray-600 hover:text-gray-700 hover:bg-gray-100 p-2 rounded-lg transition" title="More">
+            <button className="text-gray-600 dark:text-gray-400 hover:text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:bg-gray-700 p-2 rounded-lg transition" title="More">
               <MoreVertical size={18} />
             </button>
           </div>

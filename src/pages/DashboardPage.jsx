@@ -8,7 +8,7 @@ export function DashboardPage() {
     <div className="space-y-8">
       {/* Key Metrics */}
       <div>
-        <h2 className="text-2xl font-bold text-gray-900 mb-6">Performance Metrics</h2>
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Performance Metrics</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {metrics.map((metric, idx) => (
             <MetricCard key={idx} {...metric} />
@@ -18,7 +18,7 @@ export function DashboardPage() {
 
       {/* Charts */}
       <div>
-        <h2 className="text-2xl font-bold text-gray-900 mb-6">Analytics Overview</h2>
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Analytics Overview</h2>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <LineChartCard data={chartData.revenue} title="Revenue Trend" />
           <BarChartCard data={chartData.users} title="User Activity" />
@@ -27,14 +27,14 @@ export function DashboardPage() {
 
       {/* Status indicators */}
       <div>
-        <h2 className="text-2xl font-bold text-gray-900 mb-6">System Status</h2>
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">System Status</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg shadow hover:shadow-lg transition border border-blue-200 p-6">
             <div className="flex items-center justify-between">
               <div>
-                <h3 className="text-gray-700 text-sm font-semibold mb-2 uppercase tracking-wider">Peak Activity</h3>
-                <p className="text-3xl font-bold text-gray-900">2:30 PM</p>
-                <p className="text-xs text-gray-600 mt-2">Today</p>
+                <h3 className="text-gray-700 dark:text-gray-300 text-sm font-semibold mb-2 uppercase tracking-wider">Peak Activity</h3>
+                <p className="text-3xl font-bold text-gray-900 dark:text-white">2:30 PM</p>
+                <p className="text-xs text-gray-600 dark:text-gray-400 mt-2">Today</p>
               </div>
               <div className="w-16 h-16 bg-gradient-to-br from-blue-400 to-blue-600 rounded-lg flex items-center justify-center">
                 <Activity size={32} className="text-white" />
@@ -45,8 +45,8 @@ export function DashboardPage() {
           <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-lg shadow hover:shadow-lg transition border border-green-200 p-6">
             <div className="flex items-center justify-between">
               <div>
-                <h3 className="text-gray-700 text-sm font-semibold mb-2 uppercase tracking-wider">Response Time</h3>
-                <p className="text-3xl font-bold text-gray-900">245ms</p>
+                <h3 className="text-gray-700 dark:text-gray-300 text-sm font-semibold mb-2 uppercase tracking-wider">Response Time</h3>
+                <p className="text-3xl font-bold text-gray-900 dark:text-white">245ms</p>
                 <p className="text-xs text-green-600 mt-2">↓ 12% from last week</p>
               </div>
               <div className="w-16 h-16 bg-gradient-to-br from-green-400 to-green-600 rounded-lg flex items-center justify-center">
@@ -58,8 +58,8 @@ export function DashboardPage() {
           <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg shadow hover:shadow-lg transition border border-purple-200 p-6">
             <div className="flex items-center justify-between">
               <div>
-                <h3 className="text-gray-700 text-sm font-semibold mb-2 uppercase tracking-wider">System Uptime</h3>
-                <p className="text-3xl font-bold text-gray-900">99.98%</p>
+                <h3 className="text-gray-700 dark:text-gray-300 text-sm font-semibold mb-2 uppercase tracking-wider">System Uptime</h3>
+                <p className="text-3xl font-bold text-gray-900 dark:text-white">99.98%</p>
                 <p className="text-xs text-purple-600 mt-2">Excellent</p>
               </div>
               <div className="w-16 h-16 bg-gradient-to-br from-purple-400 to-purple-600 rounded-lg flex items-center justify-center">
