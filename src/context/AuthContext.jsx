@@ -20,7 +20,7 @@ export function AuthProvider({ children }) {
           email,
           name: 'Ephraim Agboola',
           role: 'Admin',
-          avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=John'
+          avatar: '/avatars/ephraim.jpg'
         };
         setUser(userData);
         localStorage.setItem('insighta_user', JSON.stringify(userData));

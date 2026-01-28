@@ -2,7 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { DataTable, Pagination, StatusBadge } from '../components/Tables';
 import { FilterBar } from '../components/Filters';
 import { transactions as mockTransactions } from '../data/mockData';
-import { Eye, Edit2, MoreVertical, Download, Wallet } from 'lucide-react';
+import { Eye, EyeOff, Edit2, MoreVertical, Download, Wallet } from 'lucide-react';
 
 export function TransactionsPage() {
   const [page, setPage] = useState(1);
@@ -11,6 +11,21 @@ export function TransactionsPage() {
     status: '',
     type: ''
   });
+  // Track which rows have hidden info
+  const [hiddenRows, setHiddenRows] = useState(new Set());
+
+  // Toggle visibility for a specific row
+  const toggleRowVisibility = (rowId) => {
+    setHiddenRows(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(rowId)) {
+        newSet.delete(rowId);
+      } else {
+        newSet.add(rowId);
+      }
+      return newSet;
+    });
+  };
 
   const filteredData = useMemo(() => {
     return mockTransactions.filter(txn => {
@@ -29,22 +44,41 @@ export function TransactionsPage() {
     { 
       key: 'id', 
       label: 'Transaction ID',
-      render: (value) => <span className="font-mono text-xs bg-gray-100 px-2 py-1 rounded">{value}</span>
+      render: (value, row) => (
+        <span className="font-mono text-xs bg-gray-100 px-2 py-1 rounded">
+          {hiddenRows.has(row.id) ? '••••••' : value}
+        </span>
+      )
     },
     { 
       key: 'user', 
       label: 'User',
-      render: (value) => <span className="font-medium text-gray-900">{value}</span>
+      render: (value, row) => (
+        <span className="font-medium text-gray-900">
+          {hiddenRows.has(row.id) ? '•••••••' : value}
+        </span>
+      )
     },
     { 
       key: 'amount', 
       label: 'Amount',
-      render: (value) => <span className="font-semibold text-gray-900">${value.toLocaleString()}</span>
+      render: (value, row) => (
+        <span className="font-semibold text-gray-900">
+          {hiddenRows.has(row.id) ? '$•••••' : `$${value.toLocaleString()}`}
+        </span>
+      )
     },
     { 
       key: 'type', 
       label: 'Type',
-      render: (value) => {
+      render: (value, row) => {
+        if (hiddenRows.has(row.id)) {
+          return (
+            <span className="px-3 py-1 rounded-full text-xs font-medium text-gray-400 bg-gray-50">
+              •••••••
+            </span>
+          );
+        }
         const colors = {
           deposit: 'text-green-700 bg-green-50',
           withdrawal: 'text-red-700 bg-red-50',
@@ -60,12 +94,25 @@ export function TransactionsPage() {
     { 
       key: 'status', 
       label: 'Status',
-      render: (value) => <StatusBadge status={value} />
+      render: (value, row) => {
+        if (hiddenRows.has(row.id)) {
+          return (
+            <span className="px-3 py-1 rounded-full text-xs font-medium text-gray-400 bg-gray-50">
+              •••••
+            </span>
+          );
+        }
+        return <StatusBadge status={value} />;
+      }
     },
     { 
       key: 'date', 
       label: 'Date',
-      render: (value) => <span className="text-gray-600">{value}</span>
+      render: (value, row) => (
+        <span className="text-gray-600">
+          {hiddenRows.has(row.id) ? '••••/••/••' : value}
+        </span>
+      )
     },
   ];
 
@@ -116,8 +163,14 @@ export function TransactionsPage() {
         data={paginatedData}
         actions={(row) => (
           <div className="flex items-center space-x-3">
-            <button className="text-blue-600 hover:text-blue-700 hover:bg-blue-50 p-2 rounded-lg transition" title="View">
-              <Eye size={18} />
+            <button 
+              onClick={() => toggleRowVisibility(row.id)}
+              className={`hover:bg-blue-50 p-2 rounded-lg transition ${
+                hiddenRows.has(row.id) ? 'text-gray-400 hover:text-gray-600' : 'text-blue-600 hover:text-blue-700'
+              }`}
+              title={hiddenRows.has(row.id) ? 'Show information' : 'Hide information'}
+            >
+              {hiddenRows.has(row.id) ? <EyeOff size={18} /> : <Eye size={18} />}
             </button>
             <button className="text-gray-600 hover:text-gray-700 hover:bg-gray-100 p-2 rounded-lg transition" title="Edit">
               <Edit2 size={18} />
@@ -139,4 +192,3 @@ export function TransactionsPage() {
     </div>
   );
 }
-
