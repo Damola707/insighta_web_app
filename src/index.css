@@ -1,7 +1,8 @@
 @import "tailwindcss";
 
 @plugin "tailwindcss-animate";
-@import "tw-animate-css";
+@plugin "tailwindcss-animate";
+
 
 @custom-variant dark (&:is(.dark *));
 
@@ -103,6 +104,15 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+.alert-delete-btn {
+    background-color: #dc2626 !important;
+    color: white !important;
+}
+
+.alert-delete-btn:hover {
+    background-color: #b91c1c !important;
 }
 
 @media (prefers-color-scheme: light) {

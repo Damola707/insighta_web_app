@@ -2,7 +2,26 @@ import React, { useState, useMemo } from 'react';
 import { DataTable, Pagination, StatusBadge } from '../components/Tables';
 import { FilterBar } from '../components/Filters';
 import { users as mockUsers } from '../data/mockData';
-import { Mail, MessageSquare, MoreVertical, UserPlus, Users as UsersIcon } from 'lucide-react';
+import { Mail, MessageSquare, Edit2, Trash2, MoreVertical, UserPlus, Users as UsersIcon } from 'lucide-react';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 
 export function UsersPage() {
   const [page, setPage] = useState(1);
@@ -105,15 +124,95 @@ export function UsersPage() {
         data={paginatedData}
         actions={(row) => (
           <div className="flex items-center space-x-3">
-            <button className="text-blue-600 hover:text-blue-700 hover:bg-blue-50 p-2 rounded-lg transition" title="Message">
-              <MessageSquare size={18} />
-            </button>
-            <button className="text-gray-600 hover:text-gray-700 hover:bg-gray-100 p-2 rounded-lg transition" title="More">
-              <MoreVertical size={18} />
-            </button>
-          </div>
-        )}
-      />
+            <Dialog>
+              <DialogTrigger asChild>
+                <button
+                  className="text-blue-600 hover:text-blue-700 hover:bg-blue-50 p-2 rounded-lg transition"
+                  title="Edit"
+                >
+                  <Edit2 size={16} />
+                </button>
+              </DialogTrigger>
+
+              <DialogContent>
+                <DialogHeader>
+                  <DialogTitle>Edit User</DialogTitle>
+                </DialogHeader>
+
+                <form
+                  className="space-y-4"
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    // Handle save logic here
+                  }}
+                >
+                  <input
+                    className="w-full border p-2 rounded"
+                    defaultValue={row.name}
+                    placeholder="Customer Name"
+                    name="name"
+                  />
+
+                  <input
+                    className="w-full border p-2 rounded"
+                    defaultValue={row.id}
+                    placeholder="User ID"
+                    name="userId"
+                  />
+
+                  <input
+                    className="w-full border p-2 rounded"
+                    defaultValue={row.totalSpent}
+                    placeholder="Total Spent"
+                    name="totalSpent"
+                  />
+
+                  <button
+                    type="submit"
+                    className="w-full bg-black text-white py-2 rounded hover:bg-gray-800"
+                  >
+                    Save Changes
+                  </button>
+                </form>
+              </DialogContent>
+            </Dialog>
+            <AlertDialog>
+                    <AlertDialogTrigger asChild>
+                        <button className="text-red-500 hover:text-red-700 p-1">
+                        <Trash2 size={16} />
+                        </button>
+                    </AlertDialogTrigger>
+                    <AlertDialogContent>
+                        <AlertDialogHeader>
+                        <AlertDialogTitle>Delete User</AlertDialogTitle>
+                        <AlertDialogDescription>
+                            Are you sure you want to delete user {row.id} for {row.name}?  
+                            This action cannot be undone.
+                        </AlertDialogDescription>
+                        </AlertDialogHeader>
+                        <AlertDialogFooter>
+                        <AlertDialogCancel>Cancel</AlertDialogCancel>
+                        <AlertDialogAction
+                            onClick={() => {
+                            // Handle delete logic here
+                            console.log('Deleting user:', row.id);
+                            }}
+                            className="alert-delete-btn"
+                        >
+                            Delete
+                        </AlertDialogAction>
+                        </AlertDialogFooter>
+                    </AlertDialogContent>
+                    </AlertDialog>
+                      <button
+                        className="text-gray-600 hover:text-gray-700 hover:bg-gray-100 p-2 rounded-lg transition"
+                        title="More"
+                      >
+                        <MoreVertical size={16} />
+                      </button>
+                    </div>
+            )}
+          />
 
       <Pagination
         page={page}
