@@ -133,24 +133,24 @@ export function UsersPage() {
   ];
 
   return (
-    <div className="space-y-6 w-full">
+    <div className="space-y-6">
       {/* Page header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white flex items-center space-x-3 mb-2">
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-white flex items-center space-x-3 mb-2">
             <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg flex items-center justify-center shadow-lg">
               <UsersIcon size={24} className="text-white" />
             </div>
             <span>Users</span>
           </h1>
-          <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">Manage and monitor user accounts</p>
+          <p className="text-gray-600 dark:text-gray-400">Manage and monitor user accounts</p>
         </div>
-        <div className="flex items-center gap-2 sm:gap-3 flex-wrap sm:flex-nowrap">
-          <button className="flex items-center space-x-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 sm:px-4 py-2 rounded-lg transition whitespace-nowrap font-medium shadow-sm flex-1 sm:flex-none justify-center">
+        <div className="flex items-center space-x-3">
+          <button className="flex items-center space-x-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 px-4 py-2 rounded-lg transition whitespace-nowrap font-medium shadow-sm">
             <RefreshCw size={18} />
-            <span className="sm:inline">Refresh</span>
+            <span className="hidden sm:inline">Refresh</span>
           </button>
-          <button className="flex items-center space-x-2 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-4 sm:px-5 py-2 sm:py-2.5 rounded-lg transition whitespace-nowrap shadow-md hover:shadow-lg font-medium flex-1 sm:flex-none justify-center">
+          <button className="flex items-center space-x-2 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-5 py-2.5 rounded-lg transition whitespace-nowrap shadow-md hover:shadow-lg font-medium">
             <UserPlus size={18} />
             <span>Add User</span>
           </button>
@@ -158,60 +158,60 @@ export function UsersPage() {
       </div>
 
       {/* Statistics Cards */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 w-full">
-        <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-3 sm:p-5 shadow-sm hover:shadow-md transition">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-5 shadow-sm hover:shadow-md transition">
           <div className="flex items-center justify-between mb-2">
-            <p className="text-xs sm:text-sm font-medium text-gray-600 dark:text-gray-400">Total Users</p>
-            <div className="w-7 h-7 sm:w-8 sm:h-8 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center flex-shrink-0">
-              <UsersIcon size={14} className="sm:w-4 sm:h-4 text-purple-600 dark:text-purple-400" />
+            <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Total Users</p>
+            <div className="w-8 h-8 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center">
+              <UsersIcon size={16} className="text-purple-600 dark:text-purple-400" />
             </div>
           </div>
-          <p className="text-lg sm:text-2xl font-bold text-gray-900 dark:text-white">{stats.totalUsers}</p>
-          <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">Registered</p>
+          <p className="text-2xl font-bold text-gray-900 dark:text-white">{stats.totalUsers}</p>
+          <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">Registered accounts</p>
         </div>
 
-        <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-3 sm:p-5 shadow-sm hover:shadow-md transition">
+        <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-5 shadow-sm hover:shadow-md transition">
           <div className="flex items-center justify-between mb-2">
-            <p className="text-xs sm:text-sm font-medium text-gray-600 dark:text-gray-400">Active</p>
-            <div className="w-7 h-7 sm:w-8 sm:h-8 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center flex-shrink-0">
-              <UserCheck size={14} className="sm:w-4 sm:h-4 text-green-600 dark:text-green-400" />
+            <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Active Users</p>
+            <div className="w-8 h-8 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center">
+              <UserCheck size={16} className="text-green-600 dark:text-green-400" />
             </div>
           </div>
-          <p className="text-lg sm:text-2xl font-bold text-gray-900 dark:text-white">{stats.activeUsers}</p>
+          <p className="text-2xl font-bold text-gray-900 dark:text-white">{stats.activeUsers}</p>
           <p className="text-xs text-green-600 dark:text-green-400 mt-1 font-semibold">
-            {((stats.activeUsers / stats.totalUsers) * 100).toFixed(1)}%
+            {((stats.activeUsers / stats.totalUsers) * 100).toFixed(1)}% active rate
           </p>
         </div>
 
-        <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-3 sm:p-5 shadow-sm hover:shadow-md transition">
+        <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-5 shadow-sm hover:shadow-md transition">
           <div className="flex items-center justify-between mb-2">
-            <p className="text-xs sm:text-sm font-medium text-gray-600 dark:text-gray-400">Inactive</p>
-            <div className="w-7 h-7 sm:w-8 sm:h-8 bg-red-100 dark:bg-red-900/30 rounded-lg flex items-center justify-center flex-shrink-0">
-              <UserX size={14} className="sm:w-4 sm:h-4 text-red-600 dark:text-red-400" />
+            <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Inactive Users</p>
+            <div className="w-8 h-8 bg-red-100 dark:bg-red-900/30 rounded-lg flex items-center justify-center">
+              <UserX size={16} className="text-red-600 dark:text-red-400" />
             </div>
           </div>
-          <p className="text-lg sm:text-2xl font-bold text-gray-900 dark:text-white">{stats.inactiveUsers}</p>
+          <p className="text-2xl font-bold text-gray-900 dark:text-white">{stats.inactiveUsers}</p>
           <p className="text-xs text-red-600 dark:text-red-400 mt-1 font-semibold">
-            {((stats.inactiveUsers / stats.totalUsers) * 100).toFixed(1)}%
+            {((stats.inactiveUsers / stats.totalUsers) * 100).toFixed(1)}% inactive
           </p>
         </div>
 
-        <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-3 sm:p-5 shadow-sm hover:shadow-md transition">
+        <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-5 shadow-sm hover:shadow-md transition">
           <div className="flex items-center justify-between mb-2">
-            <p className="text-xs sm:text-sm font-medium text-gray-600 dark:text-gray-400">Revenue</p>
-            <div className="w-7 h-7 sm:w-8 sm:h-8 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center flex-shrink-0">
-              <DollarSign size={14} className="sm:w-4 sm:h-4 text-blue-600 dark:text-blue-400" />
+            <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Total Revenue</p>
+            <div className="w-8 h-8 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center">
+              <DollarSign size={16} className="text-blue-600 dark:text-blue-400" />
             </div>
           </div>
-          <p className="text-lg sm:text-2xl font-bold text-gray-900 dark:text-white truncate">${stats.totalRevenue.toLocaleString()}</p>
-          <p className="text-xs text-gray-500 dark:text-gray-400 mt-1 truncate">
-            ${Math.round(stats.totalRevenue / stats.totalUsers).toLocaleString()}/user
+          <p className="text-2xl font-bold text-gray-900 dark:text-white">${stats.totalRevenue.toLocaleString()}</p>
+          <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+            Avg: ${Math.round(stats.totalRevenue / stats.totalUsers).toLocaleString()}/user
           </p>
         </div>
       </div>
 
       {/* Filters */}
-      <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-3 sm:p-4 shadow-sm w-full">
+      <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4 shadow-sm">
         <FilterBar
           filters={filterConfig}
           onFilterChange={(key, value) => setFilters(prev => ({ ...prev, [key]: value }))}
@@ -219,8 +219,8 @@ export function UsersPage() {
         />
       </div>
 
-      {/* Data Table - Desktop */}
-      <div className="hidden md:block bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm overflow-hidden w-full">
+      {/* Data Table */}
+      <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm overflow-hidden">
         <DataTable
           columns={columns}
           data={paginatedData}
@@ -265,7 +265,7 @@ export function UsersPage() {
                         User ID
                       </label>
                       <input
-                        className="w-full border border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white p-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition cursor-not-allowed"
+                        className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white p-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition"
                         defaultValue={row.id}
                         placeholder="User ID"
                         name="userId"
@@ -339,162 +339,6 @@ export function UsersPage() {
             </div>
           )}
         />
-      </div>
-
-      {/* Mobile Card View */}
-      <div className="md:hidden space-y-3 w-full">
-        {paginatedData.map((user) => (
-          <div 
-            key={user.id} 
-            className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4 shadow-sm w-full"
-          >
-            <div className="flex items-center justify-between mb-3">
-              <div className="flex items-center space-x-3 min-w-0 flex-1">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-400 to-pink-500 flex items-center justify-center text-white font-semibold text-lg shadow-md flex-shrink-0">
-                  {user.name.charAt(0).toUpperCase()}
-                </div>
-                <div className="min-w-0 flex-1">
-                  <p className="font-semibold text-gray-900 dark:text-white truncate">{user.name}</p>
-                  <p className="text-xs text-gray-500 dark:text-gray-400">ID: {user.id}</p>
-                </div>
-              </div>
-              <div className="flex-shrink-0">
-                <StatusBadge status={user.status} />
-              </div>
-            </div>
-
-            <div className="space-y-2 mb-3">
-              <a 
-                href={`mailto:${user.email}`} 
-                className="flex items-center space-x-2 text-sm text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 truncate"
-              >
-                <Mail size={14} className="flex-shrink-0" />
-                <span className="truncate">{user.email}</span>
-              </a>
-              <div className="flex items-center justify-between text-sm gap-2">
-                <div className="flex items-center space-x-2 text-gray-600 dark:text-gray-400 min-w-0">
-                  <Calendar size={14} className="flex-shrink-0" />
-                  <span className="truncate">{user.joinDate}</span>
-                </div>
-                <div className="flex items-center space-x-1 flex-shrink-0">
-                  <DollarSign size={14} className="text-green-600 dark:text-green-400" />
-                  <span className="font-semibold text-gray-900 dark:text-white whitespace-nowrap">{user.totalSpent.toLocaleString()}</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="flex items-center justify-end space-x-2 pt-3 border-t border-gray-200 dark:border-gray-700">
-              <Dialog>
-                <DialogTrigger asChild>
-                  <button
-                    className="text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/30 p-2 rounded-lg transition"
-                    title="Edit"
-                  >
-                    <Edit2 size={16} />
-                  </button>
-                </DialogTrigger>
-
-                <DialogContent className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 w-[95vw] max-w-md">
-                  <DialogHeader>
-                    <DialogTitle className="text-gray-900 dark:text-white">Edit User</DialogTitle>
-                  </DialogHeader>
-
-                  <form
-                    className="space-y-4"
-                    onSubmit={(e) => {
-                      e.preventDefault();
-                    }}
-                  >
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                        Customer Name
-                      </label>
-                      <input
-                        className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white p-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition"
-                        defaultValue={user.name}
-                        placeholder="Customer Name"
-                        name="name"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                        User ID
-                      </label>
-                      <input
-                        className="w-full border border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white p-3 rounded-lg cursor-not-allowed"
-                        defaultValue={user.id}
-                        placeholder="User ID"
-                        name="userId"
-                        disabled
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                        Total Spent
-                      </label>
-                      <input
-                        className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white p-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition"
-                        defaultValue={user.totalSpent}
-                        placeholder="Total Spent"
-                        name="totalSpent"
-                        type="number"
-                      />
-                    </div>
-
-                    <button
-                      type="submit"
-                      className="w-full bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white py-3 rounded-lg transition font-medium shadow-md hover:shadow-lg"
-                    >
-                      Save Changes
-                    </button>
-                  </form>
-                </DialogContent>
-              </Dialog>
-
-              <AlertDialog>
-                <AlertDialogTrigger asChild>
-                  <button 
-                    className="text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/30 p-2 rounded-lg transition"
-                    title="Delete"
-                  >
-                    <Trash2 size={16} />
-                  </button>
-                </AlertDialogTrigger>
-                <AlertDialogContent className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 w-[95vw] max-w-md">
-                  <AlertDialogHeader>
-                    <AlertDialogTitle className="text-gray-900 dark:text-white">Delete User</AlertDialogTitle>
-                    <AlertDialogDescription className="text-gray-600 dark:text-gray-400">
-                      Are you sure you want to delete user <span className="font-semibold">{user.name}</span> (ID: {user.id})?  
-                      This action cannot be undone.
-                    </AlertDialogDescription>
-                  </AlertDialogHeader>
-                  <AlertDialogFooter>
-                    <AlertDialogCancel className="bg-white dark:bg-gray-700 text-gray-900 dark:text-white border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-600">
-                      Cancel
-                    </AlertDialogCancel>
-                    <AlertDialogAction
-                      onClick={() => {
-                        console.log('Deleting user:', user.id);
-                      }}
-                      className="bg-red-600 hover:bg-red-700 text-white"
-                    >
-                      Delete
-                    </AlertDialogAction>
-                  </AlertDialogFooter>
-                </AlertDialogContent>
-              </AlertDialog>
-
-              <button
-                className="text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 p-2 rounded-lg transition"
-                title="More"
-              >
-                <MoreVertical size={16} />
-              </button>
-            </div>
-          </div>
-        ))}
       </div>
 
       {/* Pagination */}
